@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="common-wasm-js">
+    <output-path>$PROJECT_DIR$/shared/common/build/libs</output-path>
+    <root id="archive" name="common-wasm-js.jar">
+      <element id="module-output" name="TradingViewTask.shared.common.wasmJsMain" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- White Circle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,18C33.57,18 17,34.57 17,55C17,75.43 33.57,92 54,92C74.43,92 91,75.43 91,55C91,34.57 74.43,18 54,18Z" />
+    <!-- Pink Dots / Grid elements matching the design -->
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M44,48C46.21,48 48,46.21 48,44C48,41.79 46.21,40 44,40C41.79,40 40,41.79 40,44C40,46.21 41.79,48 44,48Z" />
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M64,48C66.21,48 68,46.21 68,44C68,41.79 66.21,40 64,40C61.79,40 60,41.79 60,44C60,46.21 61.79,48 64,48Z" />
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M44,68C46.21,68 48,66.21 48,64C48,61.79 46.21,60 44,60C41.79,60 40,61.79 40,64C40,66.21 41.79,68 44,68Z" />
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M64,68C66.21,68 68,66.21 68,64C68,61.79 66.21,60 64,60C61.79,60 60,61.79 60,64C60,66.21 61.79,68 64,68Z" />
+    <!-- Larger inner dots -->
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M54,58C56.76,58 59,55.76 59,53C59,50.24 56.76,48 54,48C51.24,48 49,50.24 49,53C49,55.76 51.24,58 54,58Z" />
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M54,42C54.55,42 55,41.55 55,41C55,40.45 54.55,40 54,40C53.45,40 53,40.45 53,41C53,41.55 53.45,42 54,42Z" />
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M54,68C54.55,68 55,67.55 55,67C55,66.45 54.55,66 54,66C53.45,66 53,66.45 53,67C53,67.55 53.45,68 54,68Z" />
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M38,53C38.55,53 39,52.55 39,52C39,51.45 38.55,51 38,51C37.45,51 37,51.45 37,52C37,52.55 37.45,53 38,53Z" />
+    <path
+        android:fillColor="#E91E63"
+        android:pathData="M70,53C70.55,53 71,52.55 71,52C71,51.45 70.55,51 70,51C69.45,51 69,51.45 69,52C69,52.55 69.45,53 70,53Z" />
+</vector>

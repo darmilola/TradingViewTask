@@ -1,0 +1,16 @@
+# Project exclude paths
+/.gradle/
+/apps/app/androidApp/build/
+/apps/app/composeApp/build/
+/apps/app/features/authentication/build/
+/apps/app/features/chart/build/
+/apps/app/features/community/build/
+/apps/app/features/dashboard/build/
+/apps/app/features/subscription/build/
+/apps/app/features/watchlists/build/
+/build/
+/build_logics/.gradle/
+/build_logics/build/
+/build_logics/build/classes/kotlin/main/
+/shared/common/build/
+/shared/ui/build/

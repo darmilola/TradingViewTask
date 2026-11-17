@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="authentication-wasm-js">
+    <output-path>$PROJECT_DIR$/apps/app/features/authentication/build/libs</output-path>
+    <root id="archive" name="authentication-wasm-js.jar" />
+  </artifact>
+</component>
