@@ -16,11 +16,18 @@ kotlin {
             implementation(libs.ui)
             implementation(libs.components.resources)
 
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.serialization.json)
+
             api(projects.shared.common)
             api(projects.shared.ui)
 
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.screenModel)
+        }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotlinx.coroutines.core)
         }
     }
 }

@@ -12,6 +12,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import com.tradingviewtask.app.features.chart.ChartScreen
 import com.tradingviewtask.app.features.community.CommunityScreen
 import com.tradingviewtask.app.features.watchlists.WatchlistsScreen
+import com.tradingviewtask.shared.common.Instrument
 import com.tradingviewtask.shared.ui.components.AppScaffold
 import com.tradingviewtask.shared.ui.components.AppTopBar
 import org.jetbrains.compose.resources.DrawableResource
@@ -37,7 +38,8 @@ object DashboardScreens {
         @Composable
         override fun Content() {
             var selectedTab by remember { mutableStateOf(DashboardMainTab.Watchlist) }
-            val unselectedColor = Color.Gray
+            var currentInstrument by remember { mutableStateOf(Instrument.NVDA) }
+            val unselectedColor = Color.LightGray
 
             AppScaffold(
                 modifier = Modifier.background(color = Color.White),
@@ -74,7 +76,7 @@ object DashboardScreens {
                                             )
                                         }
                                     },
-                                    label = { Text(tab.title) },
+                                    label = { Text(tab.title, color = if (isSelected) Color.Black else unselectedColor) },
                                     colors = NavigationBarItemDefaults.colors(
                                         indicatorColor = Color.Transparent
                                     )
@@ -86,8 +88,19 @@ object DashboardScreens {
             ) { paddingValues ->
                 Box(modifier = Modifier.fillMaxSize()) {
                     when (selectedTab) {
-                        DashboardMainTab.Watchlist -> WatchlistsScreen().Content()
-                        DashboardMainTab.Chart -> ChartScreen().Content()
+                        DashboardMainTab.Watchlist -> WatchlistsScreen(
+                            selectedInstrument = currentInstrument,
+                            onInstrumentSelect = { instrument ->
+                                currentInstrument = instrument
+                                selectedTab = DashboardMainTab.Chart
+                            }
+                        ).Content()
+                        DashboardMainTab.Chart -> ChartScreen(
+                            selectedInstrument = currentInstrument,
+                            onInstrumentSelect = { instrument ->
+                                currentInstrument = instrument
+                            }
+                        ).Content()
                         DashboardMainTab.Community -> CommunityScreen().Content()
                         DashboardMainTab.Profile -> ProfileContent()
                     }
