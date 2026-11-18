@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import com.tradingviewtask.app.features.chart.ChartScreen
 import com.tradingviewtask.app.features.community.CommunityScreen
+import com.tradingviewtask.app.features.dashboard.profile.ProfileScreen
 import com.tradingviewtask.app.features.watchlists.WatchlistsScreen
 import com.tradingviewtask.shared.common.Instrument
 import com.tradingviewtask.shared.ui.components.AppScaffold
@@ -102,22 +103,10 @@ object DashboardScreens {
                             }
                         ).Content()
                         DashboardMainTab.Community -> CommunityScreen().Content()
-                        DashboardMainTab.Profile -> ProfileContent()
+                        DashboardMainTab.Profile -> ProfileScreen().Content()
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-internal fun ProfileContent() {
-    AppScaffold(
-        modifier = Modifier.background(color = Color.White),
-        topBar = {
-            AppTopBar(title = "Profile", isLargeTitle = true)
-        }
-    ) { paddingValues ->
-
     }
 }

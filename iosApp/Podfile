@@ -1,0 +1,9 @@
+platform :ios, '15.0'
+
+install! 'cocoapods', :disable_input_output_paths => true
+
+target 'iosApp' do
+  use_frameworks! :linkage => :static
+
+  pod 'composeApp', :path => '../apps/app/composeApp'
+end

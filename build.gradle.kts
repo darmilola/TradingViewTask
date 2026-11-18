@@ -8,3 +8,7 @@ plugins {
     alias(libs.plugins.composeCompiler) apply false
     alias(libs.plugins.kotlinSerialization) apply false
 }
+
+tasks.register("embedAndSignAppleFrameworkForXcode") {
+    dependsOn(":apps:app:composeApp:embedAndSignAppleFrameworkForXcode")
+}
