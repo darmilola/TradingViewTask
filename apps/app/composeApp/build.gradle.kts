@@ -21,6 +21,27 @@ kotlin {
             baseName = "ComposeApp"
             isStatic = true
         }
+
+        extraSpecAttributes["script_phases"] = """[
+            {
+                :name => 'Build composeApp',
+                :execution_position => :before_compile,
+                :shell_path => '/bin/sh',
+                :script => <<-SCRIPT
+                    if [ "YES" = "${'$'}OVERRIDE_KOTLIN_BUILD_IDE_SUPPORTED" ]; then
+                      echo "Skipping Gradle build task invocation"
+                      exit 0
+                    fi
+                    unset ANDROID_PREFS_ROOT
+                    set -ev
+                    REPO_ROOT="${'$'}PODS_TARGET_SRCROOT"
+                    "${'$'}REPO_ROOT/../../../gradlew" -p "${'$'}REPO_ROOT" ${'$'}KOTLIN_PROJECT_PATH:syncFramework \
+                        -Pkotlin.native.cocoapods.platform=${'$'}PLATFORM_NAME \
+                        -Pkotlin.native.cocoapods.archs="${'$'}ARCHS" \
+                        -Pkotlin.native.cocoapods.configuration="${'$'}CONFIGURATION"
+                SCRIPT
+            }
+        ]"""
     }
 
     sourceSets {
