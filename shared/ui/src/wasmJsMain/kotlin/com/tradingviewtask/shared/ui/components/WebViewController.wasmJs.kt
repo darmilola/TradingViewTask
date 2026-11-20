@@ -1,10 +1,55 @@
 package com.tradingviewtask.shared.ui.components
 
+import kotlinx.browser.document
+import org.w3c.dom.HTMLIFrameElement
+
 actual class WebViewController {
+    private var iframe: HTMLIFrameElement? = null
     private var currentUrl: String? = null
+    private var onStateChanged: ((WebViewState) -> Unit)? = null
+
+    internal fun attachIframe(element: HTMLIFrameElement, onStateChangedCallback: (WebViewState) -> Unit) {
+        this.iframe = element
+        this.onStateChanged = onStateChangedCallback
+
+        currentUrl?.let { url ->
+            element.src = url
+            onStateChangedCallback(
+                WebViewState(
+                    loadingState = WebViewLoadingState.LOADED,
+                    currentUrl = url,
+                    canGoBack = false,
+                    canGoForward = false
+                )
+            )
+        }
+    }
+
+    internal fun detachIframe() {
+        this.iframe = null
+        this.onStateChanged = null
+    }
+
+    internal fun updateBounds(left: Float, top: Float, width: Float, height: Float) {
+        iframe?.setAttribute(
+            "style",
+            "position: fixed; left: ${left}px; top: ${top}px; width: ${width}px; height: ${height}px; border: none; z-index: 1000;"
+        )
+    }
 
     actual fun loadUrl(url: String) {
         currentUrl = url
+        iframe?.let { el ->
+            el.src = url
+            onStateChanged?.invoke(
+                WebViewState(
+                    loadingState = WebViewLoadingState.LOADED,
+                    currentUrl = url,
+                    canGoBack = false,
+                    canGoForward = false
+                )
+            )
+        }
     }
 
     actual fun evaluateJavaScript(script: String, callback: ((String?) -> Unit)?) {
@@ -15,6 +60,7 @@ actual class WebViewController {
     }
 
     actual fun reload() {
+        iframe?.src = iframe?.src ?: ""
     }
 
     actual fun goBack() {
@@ -27,20 +73,27 @@ actual class WebViewController {
 
     actual fun canGoForward(): Boolean = false
 
-    actual fun getCurrentUrl(): String? = currentUrl
-
-    actual fun setCookie(url: String, cookie: String) {
+    actual fun getCurrentUrl(): String? {
+        return iframe?.src ?: currentUrl
     }
 
-    actual fun getCookies(url: String): String? = null
+    actual fun setCookie(url: String, cookie: String) {
+        document.cookie = cookie
+    }
+
+    actual fun getCookies(url: String): String? {
+        return document.cookie
+    }
 
     actual fun clearCookies() {
     }
 
     actual fun removeCookie(url: String, cookieName: String) {
+        document.cookie = "$cookieName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"
     }
 
     actual fun dispose() {
+        detachIframe()
     }
 }
 
