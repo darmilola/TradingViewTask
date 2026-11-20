@@ -35,19 +35,4 @@ actual fun PlatformWebView(
             controller.detachIframe()
         }
     }
-
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .onGloballyPositioned { coordinates ->
-                val pos = coordinates.positionInWindow()
-                val size = coordinates.size
-                controller.updateBounds(
-                    left = pos.x,
-                    top = pos.y,
-                    width = size.width.toFloat(),
-                    height = size.height.toFloat()
-                )
-            }
-    )
 }
