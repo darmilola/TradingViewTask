@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tradingviewtask.shared.ui.theme.AppThemeDefaults
 
 @Composable
 fun jakartaFontFamily(): FontFamily = FontFamily.Default
@@ -28,7 +29,8 @@ fun AppTopBar(
     onBack: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
     isLargeTitle: Boolean = true,
-    backgroundColor: Color = Color(0xFFF8F9FA),
+    backgroundColor: Color = AppThemeDefaults.colors.background,
+    contentColor: Color = AppThemeDefaults.colors.onBackground,
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     val jakartaFont = jakartaFontFamily()
@@ -51,14 +53,14 @@ fun AppTopBar(
                     modifier = Modifier
                         .size(40.dp)
                         .clip(CircleShape)
-                        .background(Color.White, CircleShape)
+                        .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape)
                         .clickable { onBack() },
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Back",
-                        tint = Color.Black,
+                        tint = contentColor,
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -73,6 +75,7 @@ fun AppTopBar(
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp
                     ),
+                    color = contentColor,
                     modifier = Modifier.weight(1f)
                 )
                 // Small title actions
@@ -98,6 +101,7 @@ fun AppTopBar(
                         fontSize = 25.sp,
                         lineHeight = 40.sp
                     ),
+                    color = contentColor,
                     modifier = Modifier.weight(1f)
                 )
                 // Large title actions parallel to it

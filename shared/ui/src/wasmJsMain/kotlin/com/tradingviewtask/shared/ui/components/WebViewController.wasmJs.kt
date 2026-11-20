@@ -13,7 +13,9 @@ actual class WebViewController {
         this.onStateChanged = onStateChangedCallback
 
         currentUrl?.let { url ->
-            element.src = url
+            if (url.isNotEmpty() && element.src != url) {
+                element.src = url
+            }
             onStateChangedCallback(
                 WebViewState(
                     loadingState = WebViewLoadingState.LOADED,
@@ -40,7 +42,9 @@ actual class WebViewController {
     actual fun loadUrl(url: String) {
         currentUrl = url
         iframe?.let { el ->
-            el.src = url
+            if (url.isNotEmpty() && el.src != url) {
+                el.src = url
+            }
             onStateChanged?.invoke(
                 WebViewState(
                     loadingState = WebViewLoadingState.LOADED,
@@ -60,7 +64,9 @@ actual class WebViewController {
     }
 
     actual fun reload() {
-        iframe?.src = iframe?.src ?: ""
+        currentUrl?.let { url ->
+            iframe?.src = url
+        }
     }
 
     actual fun goBack() {

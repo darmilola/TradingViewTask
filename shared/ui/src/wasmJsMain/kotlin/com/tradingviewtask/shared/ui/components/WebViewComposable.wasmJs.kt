@@ -20,7 +20,7 @@ actual fun PlatformWebView(
         val iframe = (document.createElement("iframe") as HTMLIFrameElement).apply {
             setAttribute(
                 "style",
-                "position: fixed; border: none; z-index: 1000;"
+                "position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 1000;"
             )
         }
 
@@ -35,4 +35,21 @@ actual fun PlatformWebView(
             controller.detachIframe()
         }
     }
+
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .onGloballyPositioned { coordinates ->
+                val pos = coordinates.positionInWindow()
+                val size = coordinates.size
+                if (size.width > 0 && size.height > 0) {
+                    controller.updateBounds(
+                        left = pos.x,
+                        top = pos.y,
+                        width = size.width.toFloat(),
+                        height = size.height.toFloat()
+                    )
+                }
+            }
+    )
 }

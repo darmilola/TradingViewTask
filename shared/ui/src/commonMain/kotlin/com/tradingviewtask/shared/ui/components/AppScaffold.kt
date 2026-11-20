@@ -40,8 +40,6 @@ fun AppScaffold(
     floatingActionButtonPosition: FabPosition = FabPosition.End,
     containerColor: Color = AppThemeDefaults.colors.background,
     contentColor: Color = contentColorFor(containerColor),
-    // By default, handle all system bars and display cutouts.
-    // We union them to ensure a comprehensive safe area.
     contentWindowInsets: WindowInsets = WindowInsets.systemBars.union(WindowInsets.displayCutout),
     isOnline: Boolean = true,
     isLoading: Boolean = false,
@@ -99,7 +97,7 @@ fun AppScaffold(
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
-            Column(modifier = Modifier.background(Color.White)) {
+            Column(modifier = Modifier.background(containerColor)) {
                 topBar()
                 OfflineBanner(isOnline = isOnline)
             }

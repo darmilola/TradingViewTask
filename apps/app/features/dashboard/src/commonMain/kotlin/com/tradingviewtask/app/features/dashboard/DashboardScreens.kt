@@ -15,7 +15,6 @@ import com.tradingviewtask.app.features.dashboard.profile.ProfileScreen
 import com.tradingviewtask.app.features.watchlists.WatchlistsScreen
 import com.tradingviewtask.shared.common.Instrument
 import com.tradingviewtask.shared.ui.components.AppScaffold
-import com.tradingviewtask.shared.ui.components.AppTopBar
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import tradingviewtask.apps.app.features.dashboard.generated.resources.Res
@@ -40,16 +39,19 @@ object DashboardScreens {
         override fun Content() {
             var selectedTab by remember { mutableStateOf(DashboardMainTab.Watchlist) }
             var currentInstrument by remember { mutableStateOf(Instrument.NVDA) }
-            val unselectedColor = Color.LightGray
+
+            val selectedColor = MaterialTheme.colorScheme.onSurface
+            val unselectedColor = MaterialTheme.colorScheme.onSurfaceVariant
 
             AppScaffold(
-                modifier = Modifier.background(color = Color.White),
+                modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
+                containerColor = MaterialTheme.colorScheme.background,
                 bottomBar = {
                     Surface(
                         modifier = Modifier.fillMaxWidth(),
                         shadowElevation = 8.dp,
                         tonalElevation = 8.dp,
-                        color = Color.White
+                        color = MaterialTheme.colorScheme.surface
                     ) {
                         NavigationBar(
                             modifier = Modifier.height(90.dp),
@@ -72,12 +74,12 @@ object DashboardScreens {
                                             Icon(
                                                 painter = painterResource(tab.icon),
                                                 contentDescription = tab.title,
-                                                tint = if (isSelected) Color.Black else unselectedColor,
+                                                tint = if (isSelected) selectedColor else unselectedColor,
                                                 modifier = Modifier.height(24.dp).width(32.dp)
                                             )
                                         }
                                     },
-                                    label = { Text(tab.title, color = if (isSelected) Color.Black else unselectedColor) },
+                                    label = { Text(tab.title, color = if (isSelected) selectedColor else unselectedColor) },
                                     colors = NavigationBarItemDefaults.colors(
                                         indicatorColor = Color.Transparent
                                     )
