@@ -1,0 +1,10 @@
+.git
+.gradle
+.idea
+**/build/
+**/node_modules/
+**/kotlin-js-store/
+*.bat
+.DS_Store
+instruction.md
+deployment/scripts/

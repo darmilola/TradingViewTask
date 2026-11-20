@@ -66,6 +66,18 @@ kotlin {
             api(projects.apps.app.features.subscription)
             api(projects.apps.app.features.dashboard)
         }
+
+        val wasmJsMain by getting {
+            dependsOn(commonMain.get())
+            dependencies {
+                implementation(libs.runtime)
+                implementation(libs.foundation)
+                implementation(libs.material3)
+                implementation(libs.ui)
+                implementation(libs.components.resources)
+                implementation(libs.kotlinx.browser)
+            }
+        }
     }
 }
 

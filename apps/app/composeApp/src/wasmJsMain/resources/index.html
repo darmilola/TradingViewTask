@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; object-src 'none';">
+
+    <meta name="theme-color" content="#FFFFFF">
+    <title>TradingViewTask</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+          box-sizing: border-box;
+      }
+
+      html {
+          width: 100%;
+          height: 100%;
+      }
+
+      body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          min-height: 100dvh;
+          overflow: hidden;
+          background: #ffffff;
+          overscroll-behavior: none;
+          padding:
+              env(safe-area-inset-top)
+              env(safe-area-inset-right)
+              env(safe-area-inset-bottom)
+              env(safe-area-inset-left);
+      }
+
+      #compose-target {
+          width: 100%;
+          height: 100%;
+          display: block;
+          outline: none;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+      }
+
+      canvas {
+          display: block;
+      }
+    </style>
+</head>
+<body>
+    <div id="compose-target" tabindex="0"></div>
+    <script type="module" src="skiko.mjs"></script>
+    <script type="module" src="composeApp.js"></script>
+</body>
+</html>

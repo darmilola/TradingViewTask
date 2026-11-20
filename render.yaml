@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: tradingviewtask-app
+    env: docker
+    dockerfilePath: deployment/docker/Dockerfile
+    dockerContext: .
+    plan: starter # Standard/Starter instance recommended for WASM Gradle builds
+    envVars:
+      - key: PORT
+        value: 8080
+    dockerBuildArgs:
+      - key: APP_NAME
+        value: app
+      - key: BUILD_ENV
+        value: production

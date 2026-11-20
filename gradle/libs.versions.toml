@@ -16,12 +16,13 @@ androidx-activity = "1.9.3"
 androidx-appcompat = "1.7.0"
 
 # Kotlin Libraries
+browser = "0.3"
 coroutines = "1.9.0"
 serialization = "1.7.3"
 
 # DI & Nav
 koin = "4.0.0"
-voyager = "1.0.0"
+voyager = "1.1.0-beta02"
 
 # Coil & Ktor
 coil = "3.0.4"
@@ -45,6 +46,7 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 
 # Coroutines & Serialization
+kotlinx-browser = { module = "org.jetbrains.kotlinx:kotlinx-browser", version.ref = "browser" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 

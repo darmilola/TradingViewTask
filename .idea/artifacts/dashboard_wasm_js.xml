@@ -1,6 +1,8 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="dashboard-wasm-js">
     <output-path>$PROJECT_DIR$/apps/app/features/dashboard/build/libs</output-path>
-    <root id="archive" name="dashboard-wasm-js.jar" />
+    <root id="archive" name="dashboard-wasm-js.jar">
+      <element id="module-output" name="TradingViewTask.apps.app.features.dashboard.wasmJsMain" />
+    </root>
   </artifact>
 </component>
